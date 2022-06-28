@@ -1,31 +1,40 @@
 import React from 'react';
 import { Button } from '@mui/material';
-// import '../style.css';
+import '../style.css';
 import { makeStyles } from '@material-ui/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import SvgIcon from '@mui/material/SvgIcon';
+import { Bell } from 'react-feather';
+import Avatar from '@mui/material/Avatar'
 
 const useStyles = makeStyles({
-  appBar: {
-    boxShadow: 'none',
-    backgroundColor: '#f9f9',  
+  root: {
+    "&.MuiPaper-root": {
+      boxShadow: 'none',
+    "& img": {
+      maxHeight: 100,
+     },
+    },
   },
-  button: {
-    color: '#f9f9',
-  }
 });
 function Header() {
-  const classes = useStyles();
+const classes = useStyles();
   
   return(
-    <AppBar position="fixed" color="inherit" className = { classes.appBar }>
+    <AppBar position="fixed" color="inherit" className={classes.root}>
       <Toolbar>
-        <div className>
-          <span>Admin</span>
+        <img src="/images/Condo-Mini.jpg" alt="logo" className={classes.img}/>
+        <div className="grow">
+          {/* <input></input> */}
         </div>
-        <div className="">
-          <Button variant="contained" className={ classes.button }>create user</Button>
+        <div className="userSection">
+          <Button variant="contained" className="button">create user</Button>
         </div>
+        <SvgIcon className="bell">
+          <Bell></Bell>
+        </SvgIcon>
+        <Avatar alt="Remy Sharp" src="/" />
       </Toolbar>
     </AppBar>
   )

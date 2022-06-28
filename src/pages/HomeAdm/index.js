@@ -16,16 +16,13 @@ const useStyles = makeStyles({
     width: '1200px',
     margin: '0 auto',
   },
-  appBar: {
-    backgroundColor: '#f9f9',
-  }
 })
 function HomeAdm() {
   const classes = useStyles();
   
   return (
     <div className={classes.root}>
-      <Header className={classes.appBar}/>
+      <Header />
         <main className={classes.main}>
           <NavBar/>
           <Feed/>
