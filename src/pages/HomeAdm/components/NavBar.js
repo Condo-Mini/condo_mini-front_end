@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Paper, Button, MenuList, MenuItem } from '@mui/material';
+import { Paper, Button, MenuList, MenuItem, ListItem } from '@mui/material';
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -32,6 +32,9 @@ function NavBar() {
         <MenuItem>Residents</MenuItem>
         <MenuItem>Guards</MenuItem>
       </MenuList>
+      <ListItem button>
+        Show more
+      </ListItem>
     </Paper>
   )
 }
