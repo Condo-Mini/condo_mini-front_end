@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     padding:16,
     width: 275,
     marginLeft:38,
+    marginRight:16,
   },
 
   button: {

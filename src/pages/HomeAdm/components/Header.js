@@ -1,12 +1,8 @@
 import React from 'react';
-import { Button } from '@mui/material';
 import '../style.css';
 import { makeStyles } from '@material-ui/styles';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import SvgIcon from '@mui/material/SvgIcon';
+import { AppBar, Toolbar, SvgIcon, Avatar, Button } from '@mui/material';
 import { Bell } from 'react-feather';
-import Avatar from '@mui/material/Avatar'
 
 const useStyles = makeStyles({
   root: {
