@@ -29,7 +29,7 @@ const classes = useStyles();
           {/* <input></input> */}
         </div>
         <div className="userSection">
-          <Button variant="contained" className="button">create user</Button>
+          <Button variant="contained" className="button">Post</Button>
         </div>
         <SvgIcon className="bell">
           <Bell></Bell>
