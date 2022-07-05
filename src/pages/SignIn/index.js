@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Grid, Box, Avatar, TextField, Button, Link } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import { LockOutlined } from '@material-ui/icons';
+import axios from '../../utils/axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,32 +30,22 @@ const useStyles = makeStyles((theme) => ({
    margin: '16px 32px',
   },
    
-  // left: {
-  //   background: 'blue',
-  //   flexGrow: 0,
-  //   flexBasis: '58%',
-
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-
-  // right: {
-  //   background: 'yellow',
-  //   flexGrow: 0,
-  //   flexBasis: '42%',
-  // },
-
-  // form:{
-  //  display: 'flex',
-  //  flexDirection: 'column',
-  //  margin: '64px 32px',
-  //  alignItems: 'center',
-  // },
 }));
+
 function SignIn () {
   const classes = useStyles();
+  
+  async function handleSignIn(){
+    try {
+      await axios.post('/api/home/login', { email: 'wesley@developer.com', password: 'adminadmin'});
+    
+    } catch (error){
+        console.log(error.response)
+      }
+  }
+
+
+
   return(
     <Grid container className={classes.root}>
       <Grid
@@ -135,7 +126,9 @@ function SignIn () {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                type="submit">
+                type="submit"
+                onClick={handleSignIn}
+              >
                   Entrar
               </Button>
               <Grid container>
@@ -150,44 +143,7 @@ function SignIn () {
         </Box>
       </Grid>
     </Grid>
-    
-    // <div className={classes.root}>
-      
-    //   <div className={classes.left}>
-      // <Typography 
-      //   style={{ 
-      //     color: '#fff',
-      //     fontSize: 35,
-      //     lineHeight: '45px',
-      //   }}>
-      //     <strong>
-      //       Condo-Mini
-      //     </strong>
-      //   </Typography>
-      //   <Typography
-      //     variant="body2"
-      //     style={{
-      //       color: 'rgb(255,255,255, 0.7)',
-      //       marginTop: 30,
-      //       fontSize: 15,
-      //       lineHeight: '30px',
-      //     }}
-      //   >
-      //     Simplificando a forma de gerenciar condomínios
-      //   </Typography>
-    //   </div>
-      
-      
-    //   <div className={classes.right}>
-    //    <form className={classes.form}>
-    //      <h4>Acesso</h4>
-    //      <input type="text"></input>
-    //      <input type="text"></input>
-    //    </form>
-    //   </div>
-
-    // </div>
-    )
+  )
 };
 
 export default SignIn

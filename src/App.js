@@ -4,7 +4,7 @@ import SignIn from './pages/SignIn';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
-
+import './mock';
 function App() {
   return (
     <ThemeProvider theme={theme}>
