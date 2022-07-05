@@ -2,9 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardHeader, CardContent, CardActions, Typography, Avatar } from '@mui/material';
 import './style.css';
+import { IconButton }from '@mui/material';
+
 const useStyles = makeStyles({
   root: {
-    padding: 1,
+    "&.MuiTypography-root": {
+      marginRight: 8,
+    },
   },
 });
 
@@ -15,13 +19,13 @@ function PostCard({ post }) {
    <Card className={classes.root}>
      <CardHeader
        avatar={<Avatar src={post.author.avatar}/>}
-       title={<Typography variant="h6">{post.author.name}</Typography>}
+       title={<Typography variant="h6" >{post.author.name}</Typography>}
        subheader={
-         <div className="subheader">Aqui
-           <Typography variant="caption">
+         <div className="subheader">
+           <Typography variant="caption" className={classes.root}>
              { post.author.name }
            </Typography>
-           <Typography variant="subtitle2">
+           <Typography variant="subtitle2" className={classes.root}>
              { post.author.name }
            </Typography>
          </div>
@@ -30,8 +34,28 @@ function PostCard({ post }) {
      <CardContent>
 
      </CardContent>
-     <CardActions>
+     <CardActions disableSpacing>
+     <IconButton aria-label="like">
+         {/* <FavoriteIcon /> */}
+         <Typography 
+           style={{cursor:'pointer'}} 
+           variant="body2 "
+           color="textSecondary"
+         >
+           {'10'}
+         </Typography>
+       </IconButton>
+       <IconButton aria-label="comment">
+         {/* <MessageIcon /> */}
+         <Typography 
+           className="reactions"
+           color="textSecondary"
+           variant="Body2"
+         >
 
+         </Typography>
+
+       </IconButton>
      </CardActions>
    </Card>
   )

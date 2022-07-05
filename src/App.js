@@ -1,8 +1,21 @@
 import React from 'react';
-import HomeAdm from './pages/HomeAdm'
+import HomeAdm from './pages/HomeAdm';
+import SignIn from './pages/SignIn';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material';
+import theme from './theme';
+
 function App() {
   return (
-    <HomeAdm />
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeAdm />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="*" element={<div>Not Fount 404!</div>} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
