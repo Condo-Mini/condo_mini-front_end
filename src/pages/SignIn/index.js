@@ -1,4 +1,4 @@
-import { React, useState }from 'react';
+import { React, useState } from 'react';
 import { Typography, Grid, Box, Avatar, TextField, Button, Link } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import { LockOutlined } from '@material-ui/icons';
@@ -38,6 +38,7 @@ function SignIn () {
   const navigate = useNavigate();
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  
   async function handleSignIn(){
     try {
      await authService.signIn('wesley@developer.com', 'admin')
@@ -47,8 +48,8 @@ function SignIn () {
       }
   }
 
-
-
+  console.log(email);
+  
   return(
     <Grid container className={classes.root}>
       <Grid
@@ -106,8 +107,8 @@ function SignIn () {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                valeu={email}
-                onChange={(event) => setEmail(event.target.valeu)}
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
               >
 
               </TextField>
@@ -122,7 +123,7 @@ function SignIn () {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                valeu={password}
+                value={password}
                 onChange={() => setPassword()}
               >
 
