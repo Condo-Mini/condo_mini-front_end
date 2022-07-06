@@ -1,9 +1,10 @@
-import { React, useState } from 'react';
+import  React from 'react';
 import { Typography, Grid, Box, Avatar, TextField, Button, Link } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import { LockOutlined } from '@material-ui/icons';
 import authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn () {
+  
   const classes = useStyles();
   const navigate = useNavigate();
   const [ email, setEmail ] = useState('');
@@ -41,15 +43,14 @@ function SignIn () {
   
   async function handleSignIn(){
     try {
-     await authService.signIn('wesley@developer.com', 'admin')
+     await authService.signIn(email, password)
      navigate('/')
     } catch (error){
-        console.log(error.response)
+
       }
   }
 
-  console.log(email);
-  
+
   return(
     <Grid container className={classes.root}>
       <Grid
@@ -124,7 +125,7 @@ function SignIn () {
                 id="password"
                 autoComplete="current-password"
                 value={password}
-                onChange={() => setPassword()}
+                onChange={(event) => setPassword(event.target.value)}
               >
 
               </TextField>
