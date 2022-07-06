@@ -1,8 +1,9 @@
-import React from 'react';
+import { React, useState }from 'react';
 import { Typography, Grid, Box, Avatar, TextField, Button, Link } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import { LockOutlined } from '@material-ui/icons';
-import axios from '../../utils/axios';
+import authService from '../../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,11 +35,13 @@ const useStyles = makeStyles((theme) => ({
 
 function SignIn () {
   const classes = useStyles();
-  
+  const navigate = useNavigate();
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
   async function handleSignIn(){
     try {
-      await axios.post('/api/home/login', { email: 'wesley@developer.com', password: 'adminadmin'});
-    
+     await authService.signIn('wesley@developer.com', 'admin')
+     navigate('/')
     } catch (error){
         console.log(error.response)
       }
@@ -103,6 +106,8 @@ function SignIn () {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                valeu={email}
+                onChange={(event) => setEmail(event.target.valeu)}
               >
 
               </TextField>
@@ -117,6 +122,8 @@ function SignIn () {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                valeu={password}
+                onChange={() => setPassword()}
               >
 
               </TextField>
