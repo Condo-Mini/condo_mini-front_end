@@ -1,5 +1,5 @@
 import  React from 'react';
-import { Typography, Grid, Box, Avatar, TextField, Button, Link } from '@mui/material';
+import { Typography, Grid, Box, Avatar, TextField, Button, Link, FormHelperText } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import { LockOutlined } from '@material-ui/icons';
 import authService from '../../services/authService';
@@ -40,13 +40,14 @@ function SignIn () {
   const navigate = useNavigate();
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   
   async function handleSignIn(){
     try {
      await authService.signIn(email, password)
      navigate('/')
     } catch (error){
-
+        setErrorMessage(error.response.data.message)
       }
   }
 
@@ -140,6 +141,14 @@ function SignIn () {
               >
                   Entrar
               </Button>
+              { 
+              
+              errorMessage &&
+              <FormHelperText error>
+                { errorMessage }
+              </FormHelperText>
+              
+              }
               <Grid container>
                 <Grid item>
                   <Link>Esqueceu sua senha?</Link>
