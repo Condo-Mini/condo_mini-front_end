@@ -11,7 +11,8 @@ mock.onPost('/api/home/login').reply((config)=>{
     'userName': 'WesleyAlmeida',
     'email': 'wesley@developer.com',
     'password': 'admin',
-    'tipo': 'sudo',
+    'typeUser': 'sudo',
+    'avatar': '../../public/images/avatar.jpg', 
   }
 
   return [200, { user }]
