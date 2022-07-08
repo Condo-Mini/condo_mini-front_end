@@ -2,9 +2,11 @@ import  React from 'react';
 import { Typography, Grid, Box, Avatar, TextField, Button, Link, FormHelperText } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import { LockOutlined } from '@material-ui/icons';
-import authService from '../../services/authService';
+// import authService from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import   signIn  from '../../actions/accountActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,24 +37,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn () {
-  
   const classes = useStyles();
   const navigate = useNavigate();
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
+  const dispatch = useDispatch();
+
   async function handleSignIn(){
+    
     try {
-     await authService.signIn(email, password)
-     navigate('/')
-    } catch (error){
+      await dispatch(signIn(email, password));
+      navigate('/')
+      } catch (error){
         setErrorMessage(error.response.data.message)
-      }
+       }
   }
-
-
-  return(
+  
+return(
     <Grid container className={classes.root}>
       <Grid
         item 

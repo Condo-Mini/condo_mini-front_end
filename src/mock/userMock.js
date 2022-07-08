@@ -12,7 +12,7 @@ mock.onPost('/api/home/login').reply((config)=>{
     'email': 'wesley@developer.com',
     'password': 'admin',
     'typeUser': 'sudo',
-    'avatar': '../../public/images/avatar.jpg', 
+    'avatar': '/images/avatar.jpg', 
   }
 
   return [200, { user }]
