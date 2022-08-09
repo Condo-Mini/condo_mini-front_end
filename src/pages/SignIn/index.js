@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import   signIn  from '../../actions/accountActions';
+// import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +45,7 @@ function SignIn () {
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
 
+  // const account = useSelector(state => state);
   async function handleSignIn(){
     
     try {
