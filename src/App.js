@@ -7,13 +7,14 @@ import { Provider } from 'react-redux'
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
 import './mock';
-// import authService from './services/authService';
+import authService from './services/authService';
 import store from './store';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 function App() {
-  const account = useSelector(state => state.account.user);
-  const isAuthenticated = Boolean(account.user);
+  const isAuthenticated = authService.isAuthenticated();
+  // const account = useSelector(state => state.account.user);
+  // const isAuthenticated = Boolean(account.user);
   return (
     <Provider store={store}> 
       <ThemeProvider theme={theme}>

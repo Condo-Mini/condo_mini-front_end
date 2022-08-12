@@ -17,8 +17,8 @@ const useStyles = makeStyles({
 });
 function Header() {
   const classes = useStyles();
-  const account = useSelector(state => state.account.user)
-  
+  // const account = useSelector(state => state.account.user)
+  const user = useSelector(state => state.user)
   return(
     <AppBar position="fixed" color="inherit" className={classes.root}>
       <Toolbar>
@@ -32,7 +32,7 @@ function Header() {
         <SvgIcon className="bell">
           <Bell></Bell>
         </SvgIcon>
-        <Avatar alt="Remy Sharp" src={account.user && account.user.avatar} />
+        <Avatar alt="Remy Sharp" src={user && user.avatar} />
       </Toolbar>
     </AppBar>
   )
